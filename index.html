@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Purusharth Tripathi | Official Website & Portfolio</title>
+    <!-- Tailwind CSS with Forms and Container Queries -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-background": "#e5e2e1",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "tertiary-container": "#e2e2e2",
+                        "secondary": "#ffb3af",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-surface": "#e5e2e1",
+                        "outline-variant": "#444748",
+                        "primary-container": "#e2e2e2",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-secondary": "#68000e",
+                        "surface-dim": "#131313",
+                        "on-tertiary-container": "#636565",
+                        "secondary-container": "#d60129",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-secondary-fixed": "#410005",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container-highest": "#353534",
+                        "on-secondary-fixed-variant": "#930018",
+                        "primary": "#ffffff",
+                        "on-primary": "#2f3131",
+                        "on-tertiary": "#2f3131",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "surface-variant": "#353534",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#636565",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container-lowest": "#0e0e0e",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#ffe7e5",
+                        "on-error": "#690005",
+                        "background": "#131313",
+                        "inverse-primary": "#5d5f5f",
+                        "surface-bright": "#393939",
+                        "inverse-surface": "#e5e2e1",
+                        "primary-fixed": "#e2e2e2",
+                        "secondary-fixed-dim": "#ffb3af",
+                        "outline": "#8e9192",
+                        "surface-tint": "#c6c6c7",
+                        "surface-container": "#201f1f",
+                        "tertiary": "#ffffff",
+                        "surface": "#131313",
+                        "on-surface-variant": "#c4c7c8",
+                        "on-primary-fixed-variant": "#454747",
+                        "secondary-fixed": "#ffdad7"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "gutter": "16px",
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "margin-mobile": "20px",
+                        "max-width": "1200px"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Inter", "sans-serif"],
+                        "display-lg-mobile": ["Inter", "sans-serif"],
+                        "label-caps": ["JetBrains Mono", "monospace"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "display-lg": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"]
+                    },
+                    fontSize: {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-lg antialiased selection:bg-secondary-container selection:text-primary">
+
+    <!-- WebGL Canvas Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none" id="shader-container">
+        <canvas class="w-full h-full block" id="shader-canvas"></canvas>
+    </div>
+    <div class="fixed inset-0 z-0 pointer-events-none backdrop-blur-[2px] bg-background/20"></div>
+
+    <!-- Sticky Navigation (Tablet & Desktop) -->
+    <nav class="hidden md:flex justify-between items-center h-16 px-gutter fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10 transition-all duration-300 ease-in-out">
+        <a href="#" class="font-headline-md text-headline-md font-display-lg text-display-lg tracking-tighter text-primary hover:opacity-80 transition-opacity">Purusharth Tripathi</a>
+        <div class="flex gap-8">
+            <a class="nav-link-btn text-primary border-b-2 border-primary pb-1 font-label-caps text-label-caps" href="#media-section" onclick="switchNavTab('posts')">Posts</a>
+            <a class="nav-link-btn text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps hover:opacity-80 transition-opacity" href="#media-section" onclick="switchNavTab('reels')">Reels</a>
+            <a class="nav-link-btn text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps hover:opacity-80 transition-opacity" href="#media-section" onclick="switchNavTab('videos')">Videos</a>
+            <a class="nav-link-btn text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps hover:opacity-80 transition-opacity" href="#guestbook-section" onclick="switchNavTab('guestbook')">Guestbook</a>
+        </div>
+        <div class="flex gap-4">
+            <a id="nav-mail-link" href="mailto:purusharthsinger.7@gmail.com" class="text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-opacity"><span class="material-symbols-outlined">mail</span></a>
+            <a id="nav-instagram-link" href="https://www.instagram.com/purusharth.wav/" target="_blank" class="text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-opacity"><span class="material-symbols-outlined">photo_camera</span></a>
+        </div>
+    </nav>
+
+    <!-- Hero Header Section -->
+    <header class="relative z-10 min-h-screen flex flex-col justify-center px-gutter pt-16 pb-20 overflow-hidden">
+        <!-- Parallax Background Cover -->
+        <div class="absolute inset-0 w-full h-full -z-10 pointer-events-none parallax-bg overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/20 z-10"></div>
+            <!-- Responsive Background Image Loader -->
+            <picture>
+                <source media="(max-width: 640px)" srcset="Background%20image/mobile.jpg">
+                <source media="(max-width: 1024px)" srcset="Background%20image/tablet.jpg">
+                <img alt="Purusharth Cover Image" class="w-full h-full object-cover object-right md:object-center transition-transform duration-300 ease-out opacity-80 scale-105" src="Background%20image/pc.jpg">
+            </picture>
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full relative z-20 flex flex-col items-start justify-center">
+            <!-- Bio Details -->
+            <div class="flex flex-col items-start text-left w-full max-w-3xl relative animate-fade-in">
+                <div class="absolute -inset-10 bg-background/60 blur-3xl -z-10 rounded-full"></div>
+                <h1 class="hero-animate-up delay-200 font-display-lg text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-primary mb-4 md:mb-6 drop-shadow-lg">
+                    Purusharth<br/>Tripathi
+                </h1>
+                <div class="hero-animate-up delay-250 mb-4">
+                    <p class="font-label-caps text-label-caps text-xs md:text-sm tracking-[0.3em] text-on-surface-variant">Singer • Musician • Student</p>
+                </div>
+                <div class="hero-animate-up delay-300 mb-6 md:mb-8 space-y-3">
+                    <p class="font-headline-md text-lg md:text-2xl text-primary font-medium tracking-widest uppercase drop-shadow-md">
+                        Indian Idol State 2018
+                    </p>
+                </div>
+                <div class="hero-animate-up delay-400 mb-8 md:mb-10">
+                    <p class="font-body-lg text-lg md:text-xl text-on-surface-variant leading-relaxed font-light drop-shadow">
+                        Creating immersive experiences through beautiful musical melodies.
+                    </p>
+                </div>
+                <div class="hero-animate-up delay-500 flex flex-wrap justify-start gap-4 items-center">
+                    <a id="hero-contact-btn" class="glass-panel px-8 py-3.5 rounded-full font-label-caps text-label-caps tracking-[0.2em] text-primary hover:bg-white/10 hover:border-white/40 transition-all duration-500 flex items-center gap-3 group shadow-[0_0_20px_rgba(255,255,255,0.05)] bg-surface-container/30 backdrop-blur-md" href="mailto:purusharthsinger.7@gmail.com">
+                        <span class="material-symbols-outlined text-lg transition-transform group-hover:scale-110">mail</span>Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Down Indicator -->
+        <div class="hidden lg:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-on-surface-variant hero-animate-up delay-500 z-20">
+            <span class="font-label-caps text-label-caps text-[10px] tracking-widest drop-shadow">SCROLL TO EXPLORE</span>
+            <span class="material-symbols-outlined animate-bounce-slow drop-shadow">keyboard_arrow_down</span>
+        </div>
+    </header>
+
+    <!-- Main Content Canvas -->
+    <main class="relative z-10 max-w-7xl mx-auto px-6 md:px-gutter pb-32 md:bg-transparent bg-background/80">
+
+        <!-- Social Bio-Links Cards Section -->
+        <section class="py-12 border-b border-outline-variant/30 reveal">
+            <div class="text-center md:text-left mb-8">
+                <h2 class="text-3xl font-display-lg text-primary tracking-tight">Social Channels</h2>
+            </div>
+            
+            <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="social-grid">
+                <!-- Instagram -->
+                <div class="social-card-wrapper">
+                    <a id="social-instagram-card" class="social-card group relative p-6 h-48 rounded-2xl bg-surface-container/60 backdrop-blur-xl border border-white/10 overflow-hidden transition-all duration-500 shadow-2xl flex flex-col justify-between" href="https://www.instagram.com/purusharth.wav/" target="_blank">
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#f09433]/0 via-[#dc2743]/0 to-[#bc1888]/0 group-hover:from-[#f09433]/10 group-hover:via-[#dc2743]/10 group-hover:to-[#bc1888]/10 transition-colors duration-500 pointer-events-none"></div>
+                        <div class="absolute inset-0 border-2 border-transparent rounded-2xl group-hover:border-[#bc1888]/30 transition-all duration-500 pointer-events-none"></div>
+                        <div class="social-spotlight absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-300" style="background: radial-gradient(circle 120px at var(--spotlight-x, 0px) var(--spotlight-y, 0px), rgba(255, 255, 255, 0.08), transparent 85%); opacity: var(--spotlight-opacity, 0);"></div>
+                        <div class="relative z-10 flex flex-col h-full justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] flex items-center justify-center mb-4 shadow-lg social-icon-wrapper">
+                                    <span class="material-symbols-outlined text-white text-2xl">photo_camera</span>
+                                </div>
+                                <h3 class="text-primary font-headline-md text-xl mb-1">Instagram</h3>
+                                <p class="text-on-surface-variant text-sm font-body-sm">@purusharth.wav • Stories & updates</p>
+                            </div>
+                            <div class="flex justify-end">
+                                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all social-arrow-btn">
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- YouTube -->
+                <div class="social-card-wrapper">
+                    <a id="social-youtube-card" class="social-card group relative p-6 h-48 rounded-2xl bg-surface-container/60 backdrop-blur-xl border border-white/10 overflow-hidden transition-all duration-500 shadow-2xl flex flex-col justify-between" href="https://youtube.com/@purusharthsinger.7?si=MioMWBFa09r7Iv3d" target="_blank">
+                        <div class="absolute inset-0 bg-red-500/0 group-hover:bg-red-500/10 transition-colors duration-500 pointer-events-none"></div>
+                        <div class="absolute inset-0 border-2 border-transparent rounded-2xl group-hover:border-red-500/30 transition-all duration-500 pointer-events-none"></div>
+                        <div class="social-spotlight absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-300" style="background: radial-gradient(circle 120px at var(--spotlight-x, 0px) var(--spotlight-y, 0px), rgba(255, 255, 255, 0.08), transparent 85%); opacity: var(--spotlight-opacity, 0);"></div>
+                        <div class="relative z-10 flex flex-col h-full justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center mb-4 shadow-lg social-icon-wrapper">
+                                    <span class="material-symbols-outlined text-white text-2xl">play_circle</span>
+                                </div>
+                                <h3 class="text-primary font-headline-md text-xl mb-1">YouTube</h3>
+                                <p class="text-on-surface-variant text-sm font-body-sm">Original singer covers & live recordings</p>
+                            </div>
+                            <div class="flex justify-end">
+                                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all social-arrow-btn">
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- LinkedIn -->
+                <div class="social-card-wrapper">
+                    <a id="social-linkedin-card" class="social-card group relative p-6 h-48 rounded-2xl bg-surface-container/60 backdrop-blur-xl border border-white/10 overflow-hidden transition-all duration-500 shadow-2xl flex flex-col justify-between" href="https://www.linkedin.com/in/purushartht7/" target="_blank">
+                        <div class="absolute inset-0 bg-[#0A66C2]/0 group-hover:bg-[#0A66C2]/10 transition-colors duration-500 pointer-events-none"></div>
+                        <div class="absolute inset-0 border-2 border-transparent rounded-2xl group-hover:border-[#0A66C2]/30 transition-all duration-500 pointer-events-none"></div>
+                        <div class="social-spotlight absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-300" style="background: radial-gradient(circle 120px at var(--spotlight-x, 0px) var(--spotlight-y, 0px), rgba(255, 255, 255, 0.08), transparent 85%); opacity: var(--spotlight-opacity, 0);"></div>
+                        <div class="relative z-10 flex flex-col h-full justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-full bg-[#0A66C2] flex items-center justify-center mb-4 shadow-lg social-icon-wrapper">
+                                    <span class="material-symbols-outlined text-white text-2xl">work</span>
+                                </div>
+                                <h3 class="text-primary font-headline-md text-xl mb-1">LinkedIn</h3>
+                                <p class="text-on-surface-variant text-sm font-body-sm">Professional profile & software resume</p>
+                            </div>
+                            <div class="flex justify-end">
+                                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all social-arrow-btn">
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- X (Twitter) -->
+                <div class="social-card-wrapper">
+                    <a id="social-x-card" class="social-card group relative p-6 h-48 rounded-2xl bg-surface-container/60 backdrop-blur-xl border border-white/10 overflow-hidden transition-all duration-500 shadow-2xl flex flex-col justify-between" href="https://x.com/purushartht7?s=20" target="_blank">
+                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-500 pointer-events-none"></div>
+                        <div class="absolute inset-0 border-2 border-transparent rounded-2xl group-hover:border-white/20 transition-all duration-500 pointer-events-none"></div>
+                        <div class="social-spotlight absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-300" style="background: radial-gradient(circle 120px at var(--spotlight-x, 0px) var(--spotlight-y, 0px), rgba(255, 255, 255, 0.08), transparent 85%); opacity: var(--spotlight-opacity, 0);"></div>
+                        <div class="relative z-10 flex flex-col h-full justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-full bg-black border border-white/20 flex items-center justify-center mb-4 shadow-lg social-icon-wrapper">
+                                    <span class="material-symbols-outlined text-white text-2xl">close</span>
+                                </div>
+                                <h3 class="text-primary font-headline-md text-xl mb-1">X (Twitter)</h3>
+                                <p class="text-on-surface-variant text-sm font-body-sm">Thoughts and conversations worth having.</p>
+                            </div>
+                            <div class="flex justify-end">
+                                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all social-arrow-btn">
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Snapchat -->
+                <div class="social-card-wrapper">
+                    <a id="social-snapchat-card" class="social-card group relative p-6 h-48 rounded-2xl bg-surface-container/60 backdrop-blur-xl border border-white/10 overflow-hidden transition-all duration-500 shadow-2xl flex flex-col justify-between" href="https://www.snapchat.com/add/purushartht_7?share_id=1r9wJxf_wWw&locale=en-IN" target="_blank">
+                        <div class="absolute inset-0 bg-[#FFFC00]/0 group-hover:bg-[#FFFC00]/10 transition-colors duration-500 pointer-events-none"></div>
+                        <div class="absolute inset-0 border-2 border-transparent rounded-2xl group-hover:border-[#FFFC00]/30 transition-all duration-500 pointer-events-none"></div>
+                        <div class="social-spotlight absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-300" style="background: radial-gradient(circle 120px at var(--spotlight-x, 0px) var(--spotlight-y, 0px), rgba(255, 255, 255, 0.08), transparent 85%); opacity: var(--spotlight-opacity, 0);"></div>
+                        <div class="relative z-10 flex flex-col h-full justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-full bg-[#FFFC00] flex items-center justify-center mb-4 shadow-lg social-icon-wrapper">
+                                    <span class="material-symbols-outlined text-black text-2xl">chat_bubble</span>
+                                </div>
+                                <h3 class="text-primary font-headline-md text-xl mb-1">Snapchat</h3>
+                                <p class="text-on-surface-variant text-sm font-body-sm">Behind the scenes & musical daily snaps</p>
+                            </div>
+                            <div class="flex justify-end">
+                                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all social-arrow-btn">
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- SoundCloud / Spotify (Mock) -->
+                <div class="social-card-wrapper">
+                    <a id="social-soundcloud-card" class="social-card group relative p-6 h-48 rounded-2xl bg-surface-container/60 backdrop-blur-xl border border-white/10 overflow-hidden transition-all duration-500 shadow-2xl flex flex-col justify-between" href="https://soundcloud.com" target="_blank">
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#ff7700]/0 to-[#ff3300]/0 group-hover:from-[#ff7700]/10 group-hover:to-[#ff3300]/10 transition-colors duration-500 pointer-events-none"></div>
+                        <div class="absolute inset-0 border-2 border-transparent rounded-2xl group-hover:border-[#ff7700]/30 transition-all duration-500 pointer-events-none"></div>
+                        <div class="social-spotlight absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-300" style="background: radial-gradient(circle 120px at var(--spotlight-x, 0px) var(--spotlight-y, 0px), rgba(255, 255, 255, 0.08), transparent 85%); opacity: var(--spotlight-opacity, 0);"></div>
+                        <div class="relative z-10 flex flex-col h-full justify-between">
+                            <div>
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#ff7700] to-[#ff3300] flex items-center justify-center mb-4 shadow-lg social-icon-wrapper">
+                                    <span class="material-symbols-outlined text-white text-2xl">cloud</span>
+                                </div>
+                                <h3 class="text-primary font-headline-md text-xl mb-1">SoundCloud</h3>
+                                <p class="text-on-surface-variant text-sm font-body-sm">Acoustic drafts & original music test tracks</p>
+                            </div>
+                            <div class="flex justify-end">
+                                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all social-arrow-btn">
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Showcase (Engineer Projects) -->
+        <section class="py-12 border-b border-outline-variant/30 reveal">
+            <div class="text-center md:text-left mb-8">
+                <h2 class="text-3xl font-display-lg text-primary tracking-tight">Featured Projects</h2>
+            </div>
+
+            <div class="flex flex-col gap-8" id="projects-container">
+                <!-- RedCardLive Project -->
+                <div class="project-card-wrapper project-reveal-left">
+                    <div class="project-card group relative rounded-3xl overflow-hidden bg-white/[0.02] backdrop-blur-[40px] border border-white/[0.05] transition-all duration-700 hover:border-white/[0.15] shadow-2xl hover:shadow-red-500/10 hover:-translate-y-1 cursor-pointer" onclick="openProjectModal({
+                        title: 'RedCardLive',
+                        description: 'Ultimate Companion App for the FIFA World Cup 2026. Real-time scores, insights, bracket dynamics, and a fully integrated admin dashboard powered by Firebase.',
+                        detailedDescription: 'Designed with deep dark mode aesthetics and high-performance WebSockets updates. Implements low-latency updates, custom SVG tournament bracket dynamics, and WebGL drifting noise background shader integration.',
+                        imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYavfBmjEgnnaJ4RKuZlLXkfK2mxb22ljCANlfaP-gaBJJQqda86Jmf5ToocWLByjpcE88bSXud7hv49yjBNanEuLRCheqOIvfbP5Ys53UxHPohmfyfdXB02HEYECq8dd0ktIxI3MwEyLtV-05UogewkFsAb5bmhy01L3K8wk0nYdr7J3hul-KBjQ146SnT99LMUtM_pFP3JGPGJLknddOOu6TKFHFbF3x__imeX8rSj9H7022qqvZ0RPV5TO8iLgG3NAN1pggB0Gz',
+                        liveUrl: 'https://redcardlive.vercel.app/'
+                    })">
+                        <!-- Project-themed Details (faint field markings & red gradient streak) -->
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(239,68,68,0.03),transparent_50%)] pointer-events-none z-0"></div>
+                        <svg class="absolute right-0 top-0 w-2/3 h-full text-red-500 opacity-[0.015] pointer-events-none select-none z-0" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.3">
+                            <rect x="5" y="5" width="90" height="90" />
+                            <line x1="50" y1="5" x2="50" y2="95" />
+                            <circle cx="50" cy="50" r="15" />
+                            <circle cx="50" cy="50" r="1" fill="currentColor" />
+                            <rect x="5" y="30" width="12" height="40" />
+                            <rect x="83" y="30" width="12" height="40" />
+                        </svg>
+
+                        <!-- Large Glow spilling over card (15-20%) -->
+                        <div class="absolute top-1/2 left-[22%] -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] bg-red-600/10 rounded-full blur-[80px] pointer-events-none mix-blend-screen z-0 project-logo-glow"></div>
+
+                        <div class="relative z-10 flex flex-col lg:flex-row items-center p-6 lg:p-8 gap-6 lg:gap-10">
+                            <!-- 45% Logo Area -->
+                            <div class="w-full lg:w-[45%] lg:basis-[45%] flex justify-center relative py-4 shrink-0 z-10">
+                                <div class="relative w-full max-w-[300px] aspect-square flex items-center justify-center project-logo-container">
+                                    <!-- Inner floating wrapper -->
+                                    <div class="relative z-10 w-full h-full flex flex-col items-center justify-center project-logo-wrapper text-red-500/80 project-logo-icon project-logo-floating-wrapper">
+                                        <span class="material-symbols-outlined text-[120px] leading-none mb-2">sports_soccer</span>
+                                        <span class="font-display-lg text-xl font-bold tracking-tight text-white/95">RedCardLive</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 55% Content Area -->
+                            <div class="w-full lg:w-[55%] lg:basis-[55%] space-y-4 z-10">
+                                <h3 class="font-display-lg text-2xl md:text-3xl text-primary">RedCard<span class="text-red-600">Live</span></h3>
+                                <p class="font-body-md text-on-surface-variant leading-relaxed opacity-80">
+                                    Ultimate Companion App for the FIFA World Cup 2026. Real-time scores, insights, bracket dynamics, and a fully integrated admin dashboard powered by Firebase.
+                                </p>
+                                
+                                <div class="pt-2">
+                                    <button class="learn-more-btn font-label-caps text-xs text-secondary-fixed-dim hover:text-primary transition-colors flex items-center gap-1.5">
+                                        <span>Learn More</span>
+                                        <span class="material-symbols-outlined text-base">arrow_forward</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rival in Retro Project -->
+                <div class="project-card-wrapper project-reveal-right">
+                    <div class="project-card group relative rounded-3xl overflow-hidden bg-white/[0.02] backdrop-blur-[40px] border border-white/[0.05] transition-all duration-700 hover:border-white/[0.15] shadow-2xl hover:shadow-green-500/10 hover:-translate-y-1 cursor-pointer" onclick="openProjectModal({
+                        title: 'Rival in Retro',
+                        description: 'Premium Fan Jersey store featuring classic vintage football kits. Built with modular designs, interactive shopping drawers, and custom WhatsApp message order routing.',
+                        detailedDescription: 'Built with modular glassmorphism layout, dynamic Jersey customization preview, interactive shopping bag drawer, and automated checkout routing directly to WhatsApp business API.',
+                        imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBc0fv09fFoY7saA5hnBsVs95OW29ZSy4UBBrlpp7W-vxNOndfiY-DqosOKZ7XoPFxBBEnRqbV2vhId-C-C-evB27A3uJXawxLTcNbec90oOWeAijAVzIS0lCV46PN4w3s5wyEv9Jf6S36rrCylWiF2QG23rkuKbe1hNfiaFBQyYd3674vBwfHKP9e9Sq2XHOuhkvmvbwWZJBBSfeSIxZzQhNmVydPqx8p318_1uGak01f5XcuFGLYDD10hVwjtsTcIj-80YLqSXfYg',
+                        liveUrl: 'https://rivalinretro.vercel.app/'
+                    })">
+                        <!-- Project-themed Details (faint kit stripes & emerald gradient streak) -->
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(16,185,129,0.03),transparent_50%)] pointer-events-none z-0"></div>
+                        <svg class="absolute right-0 top-0 w-2/3 h-full text-green-500 opacity-[0.015] pointer-events-none select-none z-0" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.3" stroke-dasharray="1 2">
+                            <line x1="-20" y1="0" x2="100" y2="120" stroke-width="1" />
+                            <line x1="0" y1="-20" x2="120" y2="100" stroke-width="1" />
+                            <line x1="20" y1="-20" x2="140" y2="100" stroke-width="1" />
+                            <line x1="40" y1="-20" x2="160" y2="100" stroke-width="1" />
+                            <line x1="60" y1="-20" x2="180" y2="100" stroke-width="1" />
+                        </svg>
+
+                        <!-- Large Glow spilling over card (15-20%) -->
+                        <div class="absolute top-1/2 left-[22%] -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] bg-emerald-600/10 rounded-full blur-[80px] pointer-events-none mix-blend-screen z-0 project-logo-glow"></div>
+
+                        <div class="relative z-10 flex flex-col lg:flex-row items-center p-6 lg:p-8 gap-6 lg:gap-10">
+                            <!-- 45% Logo Area -->
+                            <div class="w-full lg:w-[45%] lg:basis-[45%] flex justify-center relative py-4 shrink-0 z-10">
+                                <div class="relative w-full max-w-[300px] aspect-square flex items-center justify-center project-logo-container">
+                                    <!-- Inner floating wrapper -->
+                                    <div class="relative z-10 w-full h-full flex flex-col items-center justify-center project-logo-wrapper text-emerald-500/80 project-logo-icon project-logo-floating-wrapper">
+                                        <span class="material-symbols-outlined text-[120px] leading-none mb-2">shopping_bag</span>
+                                        <span class="font-display-lg text-xl font-bold tracking-tight text-white/95">Rival In Retro</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 55% Content Area -->
+                            <div class="w-full lg:w-[55%] lg:basis-[55%] space-y-4 z-10">
+                                <h3 class="font-display-lg text-2xl md:text-3xl text-primary">Rival in <span class="text-green-500">Retro</span></h3>
+                                <p class="font-body-md text-on-surface-variant leading-relaxed opacity-80">
+                                    Premium Fan Jersey store featuring classic vintage football kits. Built with modular designs, interactive shopping drawers, and custom WhatsApp message order routing.
+                                </p>
+                                
+                                <div class="pt-2">
+                                    <button class="learn-more-btn font-label-caps text-xs text-secondary-fixed-dim hover:text-primary transition-colors flex items-center gap-1.5">
+                                        <span>Learn More</span>
+                                        <span class="material-symbols-outlined text-base">arrow_forward</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Highlights Section -->
+        <section class="py-10 border-b border-outline-variant/30 overflow-x-auto hide-scrollbar reveal">
+            <div class="flex gap-6 w-max px-4 mx-auto" id="story-highlights-container">
+                <!-- Highlights dynamically populated here -->
+            </div>
+        </section>
+
+        <!-- Media & Dynamic Feed Section -->
+        <section class="py-12 border-b border-outline-variant/30 reveal" id="media-section">
+            <!-- Tabs Header -->
+            <div class="flex justify-center md:justify-start gap-8 py-6 border-b border-outline-variant/30 mb-8 sticky top-16 z-40 bg-background/90 backdrop-blur-sm">
+                <button class="tab-btn active text-primary border-b-2 border-primary pb-2 font-label-caps text-label-caps tracking-wider" onclick="switchTab('posts')">POSTS</button>
+                <button class="tab-btn text-on-surface-variant hover:text-primary transition-colors pb-2 font-label-caps text-label-caps tracking-wider" onclick="switchTab('reels')">REELS</button>
+                <button class="tab-btn text-on-surface-variant hover:text-primary transition-colors pb-2 font-label-caps text-label-caps tracking-wider" onclick="switchTab('videos')">VIDEOS</button>
+            </div>
+
+            <!-- Posts Tab Content (Bento Grid) -->
+            <div class="tab-content active" id="posts">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 auto-rows-[250px] md:auto-rows-[300px]" id="posts-container">
+                    <!-- Bento Card 1: Large Featured -->
+                    <div class="image-card relative col-span-1 md:col-span-2 row-span-1 md:row-span-2 rounded-xl overflow-hidden cursor-pointer bg-surface-container">
+                        <div class="absolute inset-0 bg-black/20 z-10"></div>
+                        <div class="w-full h-full flex items-center justify-center bg-[#151515] relative">
+                            <span class="material-symbols-outlined text-6xl text-white/5 absolute">mic_external_on</span>
+                            <div class="absolute inset-0 bg-gradient-to-tr from-black/80 to-transparent"></div>
+                            <h3 class="absolute bottom-6 left-6 text-white text-3xl font-bold tracking-tight italic z-20">The Empty Hall Sessions</h3>
+                        </div>
+                        <div class="image-overlay absolute inset-0 glass-panel flex flex-col justify-end p-6 z-20">
+                            <p class="font-headline-md text-headline-md text-primary mb-1">The Empty Hall Sessions</p>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Live Acoustic performance cover session</p>
+                        </div>
+                    </div>
+                    <!-- Bento Card 2: Portrait -->
+                    <div class="image-card relative col-span-1 row-span-1 md:row-span-2 rounded-xl overflow-hidden cursor-pointer bg-surface-container">
+                        <div class="w-full h-full flex items-center justify-center bg-[#1e1e1e] relative">
+                            <span class="material-symbols-outlined text-6xl text-white/5 absolute">camera_roll</span>
+                            <div class="absolute inset-0 bg-gradient-to-tr from-black/80 to-transparent"></div>
+                            <h3 class="absolute bottom-6 left-6 text-white text-2xl font-bold tracking-tight z-20">Editorial '23</h3>
+                        </div>
+                        <div class="image-overlay absolute inset-0 glass-panel flex flex-col justify-end p-6 z-20">
+                            <p class="font-headline-md text-headline-md text-primary mb-1">Editorial '23</p>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Fine-art portrait shot</p>
+                        </div>
+                    </div>
+                    <!-- Bento Card 3: Square Detail -->
+                    <div class="image-card relative col-span-1 row-span-1 rounded-xl overflow-hidden cursor-pointer bg-surface-container">
+                        <div class="w-full h-full flex items-center justify-center bg-[#252525] relative">
+                            <span class="material-symbols-outlined text-4xl text-white/5 absolute">album</span>
+                            <div class="absolute inset-0 bg-gradient-to-tr from-black/80 to-transparent"></div>
+                            <h4 class="absolute bottom-4 left-4 text-white text-lg font-bold z-20">Writing Drafts</h4>
+                        </div>
+                        <div class="image-overlay absolute inset-0 glass-panel flex flex-col justify-end p-4 z-20">
+                            <p class="font-headline-md text-headline-md text-primary text-base mb-1">Songwriting Sessions</p>
+                            <span class="material-symbols-outlined text-primary absolute top-4 right-4">music_note</span>
+                        </div>
+                    </div>
+                    <!-- Bento Card 4: Landscape -->
+                    <div class="image-card relative col-span-1 md:col-span-2 row-span-1 rounded-xl overflow-hidden cursor-pointer bg-surface-container">
+                        <div class="w-full h-full flex items-center justify-center bg-[#191919] relative">
+                            <span class="material-symbols-outlined text-5xl text-white/5 absolute">equalizer</span>
+                            <div class="absolute inset-0 bg-gradient-to-tr from-black/80 to-transparent"></div>
+                            <h4 class="absolute bottom-4 left-4 text-white text-xl font-bold z-20">Late Night Mixes</h4>
+                        </div>
+                        <div class="image-overlay absolute inset-0 glass-panel flex flex-col justify-end p-4 z-20">
+                            <p class="font-headline-md text-headline-md text-primary text-base mb-1">DAW audio stems mixing log</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reels Tab Content -->
+            <div class="tab-content" id="reels">
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6" id="reels-container">
+                    <!-- Reel 1 -->
+                    <div class="image-card relative aspect-[9/16] rounded-xl overflow-hidden cursor-pointer bg-surface-container group">
+                        <div class="absolute inset-0 bg-black/40 flex flex-col justify-between p-4 z-10">
+                            <div class="flex justify-between items-start">
+                                <span class="material-symbols-outlined text-white text-xl">audiotrack</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-sm">play_arrow</span>
+                                <span class="text-primary font-label-caps text-label-caps text-xs">124K</span>
+                            </div>
+                        </div>
+                        <div class="w-full h-full bg-[#18181a] flex items-center justify-center">
+                            <span class="material-symbols-outlined text-5xl text-white/5 absolute">play_arrow</span>
+                        </div>
+                    </div>
+                    <!-- Reel 2 -->
+                    <div class="image-card relative aspect-[9/16] rounded-xl overflow-hidden cursor-pointer bg-surface-container group">
+                        <div class="absolute inset-0 bg-black/40 flex flex-col justify-between p-4 z-10">
+                            <div class="flex justify-between items-start">
+                                <span class="material-symbols-outlined text-white text-xl">graphic_eq</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-sm">play_arrow</span>
+                                <span class="text-primary font-label-caps text-label-caps text-xs">89K</span>
+                            </div>
+                        </div>
+                        <div class="w-full h-full bg-[#1e1c1f] flex items-center justify-center">
+                            <span class="material-symbols-outlined text-5xl text-white/5 absolute">play_arrow</span>
+                        </div>
+                    </div>
+                    <!-- Reel 3 -->
+                    <div class="image-card relative aspect-[9/16] rounded-xl overflow-hidden cursor-pointer bg-surface-container group">
+                        <div class="absolute inset-0 bg-black/40 flex flex-col justify-between p-4 z-10">
+                            <div class="flex justify-between items-start">
+                                <span class="material-symbols-outlined text-white text-xl">piano</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-sm">play_arrow</span>
+                                <span class="text-primary font-label-caps text-label-caps text-xs">210K</span>
+                            </div>
+                        </div>
+                        <div class="w-full h-full bg-[#14181a] flex items-center justify-center">
+                            <span class="material-symbols-outlined text-5xl text-white/5 absolute">play_arrow</span>
+                        </div>
+                    </div>
+                    <!-- Reel 4 -->
+                    <div class="image-card relative aspect-[9/16] rounded-xl overflow-hidden cursor-pointer bg-surface-container group">
+                        <div class="absolute inset-0 bg-black/40 flex flex-col justify-between p-4 z-10">
+                            <div class="flex justify-between items-start">
+                                <span class="material-symbols-outlined text-white text-xl">music_note</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-sm">play_arrow</span>
+                                <span class="text-primary font-label-caps text-label-caps text-xs">56K</span>
+                            </div>
+                        </div>
+                        <div class="w-full h-full bg-[#1b191c] flex items-center justify-center">
+                            <span class="material-symbols-outlined text-5xl text-white/5 absolute">play_arrow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Videos Tab Content -->
+            <div class="tab-content" id="videos">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="videos-container">
+                    <!-- Videos dynamically populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Guestbook Section (Firebase powered) -->
+        <section class="py-12 reveal" id="guestbook-section">
+            <div class="text-center md:text-left mb-8">
+                <p class="font-label-caps text-label-caps text-xs text-secondary tracking-widest mb-2">LEAVE A NOTE</p>
+                <h2 class="text-3xl font-display-lg text-primary tracking-tight">Interactive Guestbook</h2>
+                <p class="text-on-surface-variant text-sm mt-2">Sign the wall to leave a message. Connected in real-time to the database.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <!-- Message Submission Form -->
+                <div class="lg:col-span-1 glass-panel p-6 rounded-2xl border border-white/10 bg-surface-container-low/30 backdrop-blur-xl">
+                    <form id="guestbook-form" class="space-y-5">
+                        <div>
+                            <label class="block text-xs font-label-caps text-on-surface-variant mb-2 tracking-wider">YOUR NAME</label>
+                            <input type="text" id="guest-name" required placeholder="Enter name" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-primary focus:border-secondary focus:ring-1 focus:ring-secondary transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-label-caps text-on-surface-variant mb-2 tracking-wider">YOUR MESSAGE</label>
+                            <textarea id="guest-message" required rows="3" placeholder="Leave a nice comment..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-primary focus:border-secondary focus:ring-1 focus:ring-secondary transition-all resize-none"></textarea>
+                        </div>
+                        
+                        <!-- Emoji mood -->
+                        <div>
+                            <label class="block text-xs font-label-caps text-on-surface-variant mb-2 tracking-wider">MOOD EMOJI</label>
+                            <div class="flex gap-2.5">
+                                <button type="button" class="emoji-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-lg hover:bg-white/10 transition-all select-none active">✨</button>
+                                <button type="button" class="emoji-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-lg hover:bg-white/10 transition-all select-none">🎵</button>
+                                <button type="button" class="emoji-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-lg hover:bg-white/10 transition-all select-none">🔥</button>
+                                <button type="button" class="emoji-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-lg hover:bg-white/10 transition-all select-none">💖</button>
+                                <button type="button" class="emoji-btn w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-lg hover:bg-white/10 transition-all select-none">🙌</button>
+                            </div>
+                        </div>
+
+                        <!-- Card Theme Color -->
+                        <div>
+                            <label class="block text-xs font-label-caps text-on-surface-variant mb-2 tracking-wider">CARD THEME</label>
+                            <div class="flex gap-3">
+                                <button type="button" data-color="obsidian" class="color-btn w-6 h-6 rounded-full bg-[#18181b] border-2 border-white/40 active" title="Obsidian"></button>
+                                <button type="button" data-color="emerald" class="color-btn w-6 h-6 rounded-full bg-[#064e3b] border-2 border-transparent" title="Emerald"></button>
+                                <button type="button" data-color="amethyst" class="color-btn w-6 h-6 rounded-full bg-[#4c1d95] border-2 border-transparent" title="Amethyst"></button>
+                                <button type="button" data-color="sapphire" class="color-btn w-6 h-6 rounded-full bg-[#1e3a8a] border-2 border-transparent" title="Sapphire"></button>
+                                <button type="button" data-color="ruby" class="color-btn w-6 h-6 rounded-full bg-[#7f1d1d] border-2 border-transparent" title="Ruby"></button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/95 text-background font-label-caps text-label-caps tracking-widest py-3 rounded-xl transition-all shadow-lg active:scale-[0.98] flex items-center justify-center gap-2 font-bold mt-2">
+                            <span>POST MESSAGE</span>
+                            <span class="material-symbols-outlined text-base">send</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Messages Masonry Wall -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex justify-between items-center px-2">
+                        <span class="font-label-caps text-label-caps text-xs text-on-surface-variant" id="msg-counter">MESSAGES (0)</span>
+                        <span class="text-xs text-secondary flex items-center gap-1 font-label-caps text-label-caps"><span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span> Real-time active</span>
+                    </div>
+
+                    <!-- Wall Container -->
+                    <div id="messages-wall" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[450px] overflow-y-auto pr-1">
+                        <!-- Messages dynamically populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation (Mobile Only) -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-3 px-4 bg-background/80 backdrop-blur-xl border-t border-white/10 z-50">
+        <a class="flex flex-col items-center justify-center text-primary scale-95 active:scale-90 transition-transform cursor-pointer" href="#" onclick="scrollToSection('header')">
+            <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>home</span>
+            <span class="font-label-caps text-label-caps mt-1 text-[10px]">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant scale-95 active:scale-90 transition-transform hover:text-primary transition-colors cursor-pointer" href="#media-section">
+            <span class="material-symbols-outlined">explore</span>
+            <span class="font-label-caps text-label-caps mt-1 text-[10px]">Explore</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant scale-95 active:scale-90 transition-transform hover:text-primary transition-colors cursor-pointer" href="#guestbook-section">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span class="font-label-caps text-label-caps mt-1 text-[10px]">Guestbook</span>
+        </a>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="relative z-10 w-full py-12 bg-surface-container-lowest border-t border-outline-variant flex flex-col md:flex-row justify-between items-center px-gutter max-w-7xl mx-auto gap-4 mb-20 md:mb-0 reveal">
+        <p class="font-body-sm text-body-sm text-on-surface-variant">© 2026 Purusharth Tripathi. All rights reserved.</p>
+        <div class="flex gap-6">
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80" href="admin.html">Console</a>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80" href="#">Privacy Policy</a>
+            <a id="footer-contact-link" class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80" href="mailto:purusharthsinger.7@gmail.com">Contact</a>
+            <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-80" href="#">Press Kit</a>
+        </div>
+    </footer>
+
+    <!-- ── STORY VIEWER MODAL ────────────────────────────────── -->
+    <div id="story-viewer-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/95 backdrop-blur-md transition-all duration-300">
+        <div class="relative w-full max-w-[420px] h-[92vh] max-h-[800px] md:h-[80vh] bg-surface-container-lowest md:rounded-2xl overflow-hidden shadow-2xl border border-white/10 flex flex-col justify-between">
+            
+            <!-- Top Controls (Overlay) -->
+            <div class="absolute top-0 left-0 w-full z-20 p-4 bg-gradient-to-b from-black/80 to-transparent flex flex-col gap-3">
+                <!-- Progress Bars -->
+                <div id="story-progress-container" class="flex gap-1.5 w-full">
+                    <!-- Progress bars dynamically injected here -->
+                </div>
+                <!-- Profile & Close Button -->
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center gap-2.5">
+                        <img id="story-viewer-avatar" alt="Avatar" class="w-8 h-8 rounded-full object-cover border border-white/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDynESh32YZGFQtvx5XoOk7AiJbitbSlLQyl0i_7CS8orYzEGvM_RZHkkDwzwr_c11wqxK8gYkSX7LUwToIqBC_mdzlv_F_gMhokoa2ZsPevFcwjrPw3pwIQTQ39x2ojOb1Bbq0o73ANtLqfwloFYWOPc-cL-3Lwes8STPBj44XsAsj84XlTSxr37wdx-xVJXlnZqye1mXSXJBUo0frTFLthJIab2_8f-CxRWYTz5YdvJEy8rKLX3uUO1okoLt-hH-fdH-XQCkXdOVf">
+                        <div class="flex flex-col">
+                            <span id="story-viewer-username" class="font-body-sm text-xs font-semibold text-primary">Purusharth Tripathi</span>
+                            <span id="story-viewer-time" class="font-label-caps text-[8px] text-on-surface-variant">JUST NOW</span>
+                        </div>
+                    </div>
+                    <button id="story-viewer-close" class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center p-1" title="Close">
+                        <span class="material-symbols-outlined text-2xl">close</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Area (Image or Video) -->
+            <div class="flex-1 w-full h-full flex items-center justify-center bg-black relative">
+                <!-- Media Elements (will be injected dynamically) -->
+                <div id="story-viewer-content" class="w-full h-full flex items-center justify-center"></div>
+
+                <!-- Navigation tap zones (Invisible overlays) -->
+                <div id="story-prev-zone" class="absolute left-0 top-0 w-1/3 h-full cursor-pointer z-10"></div>
+                <div id="story-next-zone" class="absolute right-0 top-0 w-2/3 h-full cursor-pointer z-10"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ── YOUTUBE VIDEO PLAYER MODAL ───────────────────────── -->
+    <div id="video-player-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-300">
+        <div class="relative w-full max-w-[850px] p-4 mx-4 bg-surface-container-lowest border border-white/10 rounded-2xl shadow-[0_0_50px_rgba(214,1,41,0.25)] flex flex-col gap-4 scale-95 opacity-0 transition-all duration-300" id="video-modal-content">
+            <!-- Close Button -->
+            <button id="video-modal-close" class="absolute -top-12 right-0 md:-top-4 md:-right-12 text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10" title="Close Player">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <!-- Responsive Iframe wrapper -->
+            <div class="w-full aspect-video rounded-xl overflow-hidden bg-black border border-white/5 shadow-2xl relative">
+                <iframe id="video-modal-iframe" class="w-full h-full absolute inset-0" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <!-- Video Title & Subscribe Button -->
+            <div class="px-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-white/5 pt-3">
+                <div>
+                    <h4 id="video-modal-title" class="font-headline-md text-lg text-primary font-semibold tracking-tight">Video Title</h4>
+                    <p class="text-[10px] font-label-caps text-secondary mt-1 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#d60129] animate-pulse"></span> YOUTUBE EXCLUSIVE</p>
+                </div>
+                <!-- Subscribe Button Group -->
+                <div class="flex items-center gap-3 bg-white/5 px-4 py-2.5 rounded-xl border border-white/10 shrink-0">
+                    <span class="text-xs text-on-surface-variant font-medium">Subscribe on YouTube</span>
+                    <a id="video-modal-subscribe" href="https://youtube.com/@purusharthsinger.7?sub_confirmation=1" target="_blank" class="bg-[#FF0000] hover:bg-[#CC0000] text-white text-xs font-semibold px-4 py-1.5 rounded-full flex items-center gap-1.5 transition-colors shadow-[0_0_15px_rgba(255,0,0,0.3)]">
+                        <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+                        Subscribe
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── PROJECT DETAIL MODAL ───────────────────────── -->
+    <div id="project-detail-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/90 backdrop-blur-md transition-all duration-300">
+        <div class="relative w-full max-w-[650px] p-6 mx-4 bg-surface-container-lowest border border-white/10 rounded-2xl shadow-[0_0_50px_rgba(255,255,255,0.1)] flex flex-col gap-5 scale-95 opacity-0 transition-all duration-300" id="project-detail-modal-content">
+            <!-- Close Button -->
+            <button id="project-detail-modal-close" class="absolute -top-12 right-0 md:-top-4 md:-right-12 text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10" title="Close Details">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <!-- Project Image Banner -->
+            <div class="w-full aspect-video rounded-xl overflow-hidden bg-black border border-white/5 shadow-2xl relative">
+                <img id="project-modal-image" class="w-full h-full object-cover" src="" alt="Project Image">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-transparent"></div>
+                <h3 id="project-modal-title" class="absolute bottom-4 left-4 text-white font-bold text-2xl tracking-tight">Project Title</h3>
+            </div>
+            <!-- Project Descriptions -->
+            <div class="space-y-4 max-h-[250px] overflow-y-auto pr-1">
+                <p id="project-modal-short-desc" class="font-body-lg text-primary text-sm font-semibold leading-relaxed"></p>
+                <p id="project-modal-detailed-desc" class="font-body-sm text-on-surface-variant leading-relaxed text-xs"></p>
+            </div>
+            <!-- Go to website Button (Footer) -->
+            <div class="border-t border-white/5 pt-4 flex justify-center w-full">
+                <a id="project-modal-link" class="project-modal-go-card group relative px-8 py-3.5 rounded-xl bg-surface-container/80 backdrop-blur-xl border border-white/10 overflow-hidden transition-all duration-300 hover:scale-[1.03] shadow-2xl flex items-center justify-center gap-3 cursor-pointer w-full max-w-[280px]" href="" target="_blank">
+                    <div class="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300"></div>
+                    <div class="absolute inset-0 border border-transparent rounded-xl group-hover:border-white/20 transition-all duration-300 pointer-events-none"></div>
+                    <span class="font-headline-md text-primary text-sm font-semibold tracking-wide relative z-10">Go to website</span>
+                    <div class="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-primary group-hover:text-background transition-all duration-300 relative z-10">
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- ── POST LIGHTBOX MODAL (MOBILE & TABLET ONLY) ────────── -->
+    <div id="post-lightbox-modal" class="fixed inset-0 z-[110] hidden flex flex-col items-center justify-center bg-black/98 backdrop-blur-lg transition-opacity duration-300 opacity-0">
+        <!-- Close Button -->
+        <button id="lightbox-close" class="absolute top-4 right-4 z-50 text-white/80 hover:text-white flex items-center justify-center p-2 rounded-full bg-white/10 border border-white/15" title="Close">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+
+        <!-- Navigation Buttons (hidden on mobile, visible on tablet) -->
+        <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 z-40 text-white/60 hover:text-white hidden md:flex items-center justify-center p-2 rounded-full bg-white/5 border border-white/10">
+            <span class="material-symbols-outlined text-2xl">chevron_left</span>
+        </button>
+        <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 z-40 text-white/60 hover:text-white hidden md:flex items-center justify-center p-2 rounded-full bg-white/5 border border-white/10">
+            <span class="material-symbols-outlined text-2xl">chevron_right</span>
+        </button>
+
+        <!-- Image Container -->
+        <div id="lightbox-image-container" class="w-full h-full flex items-center justify-center overflow-hidden touch-none relative select-none">
+            <img id="lightbox-img" src="" class="max-w-full max-h-full object-contain transition-transform duration-200 ease-out origin-center" alt="Fullscreen Image">
+        </div>
+
+        <!-- Info / Caption overlay -->
+        <div class="absolute bottom-6 left-6 right-6 z-40 text-left pointer-events-none drop-shadow-md">
+            <h3 id="lightbox-title" class="text-white font-headline-md text-lg font-semibold mb-1"></h3>
+            <p id="lightbox-desc" class="text-white/60 font-body-sm text-xs"></p>
+        </div>
+    </div>
+
+    <!-- App Script -->
+    <script type="module" src="js/app.js"></script>
+
+</body>
+</html>

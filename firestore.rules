@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Guestbook: Anyone can read messages and write new ones
+    match /guestbook/{document} {
+      allow read, create: if true;
+      // In a production app, update and delete should be restricted to authenticated admin
+      allow update, delete: if true;
+    }
+
+    // Portfolio Settings, Projects, Highlights, Posts, and Reels:
+    // Anyone can read, but write/update/delete requires authorization.
+    // If not using Firebase Auth, we allow write for now, but recommend securing it.
+    match /settings/{document} {
+      allow read, write: if true;
+    }
+    
+    match /projects/{document} {
+      allow read, write: if true;
+    }
+    
+    match /highlights/{document} {
+      allow read, write: if true;
+    }
+    
+    match /posts/{document} {
+      allow read, write: if true;
+    }
+    
+    match /reels/{document} {
+      allow read, write: if true;
+    }
+    
+    match /videos/{document} {
+      allow read, write: if true;
+    }
+  }
+}
